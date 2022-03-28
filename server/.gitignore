@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+# upload PDF files
+pdfs
+
+# watermarked PDF files
+pdfs_watermark
