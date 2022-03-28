@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import UploadPDF from './componets/UploadPDF/UploadPDF';
 import './index.css';
 
 
 class App extends React.Component {
   render() {
     return (
-      <div>Hello Steve!</div>
+      <UploadPDF />
     )
   }
 }
