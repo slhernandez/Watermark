@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 const PDFTableStyles = styled.div`
   p {
-    color: blue;
+    color: #454545;
   }
   table {
     width: 100%;
     background: ${props => props.theme.white};
-    margin: 1em 0 0 0;
+    margin: 0;
     border: 1px solid rgba(34,36,38,.15);
     box-shadow: none;
     border-radius: .285rem .285rem 0 0;
@@ -35,7 +35,6 @@ const PDFTableStyles = styled.div`
         text-transform: none;
         border-bottom: 1px solid rgba(34,36,38,.1);
         border-left: 1px solid rgba(34,36,38,.1);
-        text-align: right;
         .table-icon {
           margin-left: 0.5em;
         }
@@ -63,7 +62,7 @@ const PDFTableStyles = styled.div`
         padding: 0.78571429em 0.78571429em;
         border-left: 1px solid rgba(34,36,38,.1);
         border-top: 1px solid rgba(34,36,38,.1);
-        text-align: right;
+        font-size: 13px;
       }
       td:first-child {
         border-left: none;

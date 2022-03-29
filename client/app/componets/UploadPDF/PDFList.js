@@ -27,7 +27,7 @@ function PDFList(props) {
       //setErrorMsg(error.message);
     }
   }
-  
+
   useEffect(() => {
     getPDFList()
   }, [props.updatePDFList]);

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const UploadPDFStyles = styled.div`
   .upload-container {
-    width: 800px;
-    margin: 6em 0 0 6em;
+    width: 900px;
+    margin: 6em auto 6em auto
   }
 
   .upload-title {
@@ -28,6 +28,7 @@ const UploadPDFStyles = styled.div`
   }
 
   .file-upload-label {
+    font-weight: 600;
     margin-right: 1em;
   }
 

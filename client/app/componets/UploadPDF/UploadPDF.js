@@ -74,7 +74,7 @@ function UploadPDF() {
         <h1 className="upload-title">PDF Watermarking Tool</h1>
         <div className="upload-controls">
           <form className="upload-form" action="#">
-            <label htmlFor="file" className="file-upload-label">Upload PDF file</label>
+            <label htmlFor="file" className="file-upload-label">PDF file:</label>
             <input 
               type="file" 
               id="file" 

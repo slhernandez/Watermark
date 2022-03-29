@@ -2,6 +2,8 @@ import React from 'react';
 import PDFTableStyles from './styles/PDFTableStyles';
 import { useTable } from 'react-table';
 
+const API_ENDPOINT = "http://localhost:3000/"
+
 function Table( {columns, data }) {
 
   const {
@@ -45,8 +47,22 @@ function Table( {columns, data }) {
   )
 }
 
+/*const getPDF = async() => {
+
+}*/
+
+function downloadPDF(e, filename) {
+  e.preventDefault();
+  console.log('downloadPDF...filename', filename);
+}
+
+function downloadPDFWatermark(e, watermarkfilepath) {
+  e.preventDefault();
+  const filename = watermarkfilepath.slice(25);
+  console.log('downloadPDFWatermark...filename', filename);
+}
+
 function PDFTable(props) {
-  console.log('PDFTable...props.data', props.data);
 
   const columns = React.useMemo(
     () => [
@@ -68,11 +84,17 @@ function PDFTable(props) {
       },
       {
         Header: "Original PDF",
-        accessor: "filepath"
+        accessor: "filename",
+        Cell: props => {
+          return <a className="download-pdf" target="_blank" href={`${API_ENDPOINT}pdf/${props.value}`}>Download</a>
+        }
       },
       {
         Header: "Watermark PDF",
-        accessor: "watermarkfilepath"
+        accessor: "watermarkfilepath",
+        Cell: props => {
+          return <a className="download-pdf" target="_blank" href={`${API_ENDPOINT}pdf/watermark/${props.value.slice(25)}`}>Download</a>
+        }
       },
     ]
   )
