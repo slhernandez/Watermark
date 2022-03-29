@@ -11,7 +11,7 @@ brew install ghostscript
 
 ## Postgresql (ElephantSQL)
 
-For server-side state presistence I decided to use a free PostgreSQL database called [ElephantSQL](https://www.elephantsql.com/). The PostgreSQL database is managed online and is currently already setup and ready for our watermark server. To properly setup the db connection the following config settings located in .env file (currently named .env_sample) need to be updated.
+For server-side state presistence I decided to use a free PostgreSQL database called [ElephantSQL](https://www.elephantsql.com/). The PostgreSQL database is managed online and is currently already setup and ready for our watermark server. To properly setup the db connection the following config settings located in .env file (currently named .env_sample) will need to be updated.
 
 ```shell
 DB_HOST='YOUR_DB_HOST_HERE'
@@ -22,6 +22,8 @@ DB_NAME='YOUR_DB_NAME_HERE'
 ```
 
 For security reasons, the values for these db settings will be sent via email. Once the proper settings have been applied, rename .env_sample to .env for [dotenv](https://github.com/motdotla/dotenv) to pickup.
+
+The command that was used to create the PostgreSQL table can be referenced in the SQL folder found in server.
 
 ## Server (Express Server)
 

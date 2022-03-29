@@ -5,6 +5,12 @@ const path = require('path');
 const multer = require("multer");
 const watermark = require('image-watermark');
 
+/*
+ * Utilize node.js middleware (Multer) for handling mulitpart/form-data,
+ * that is used for uploading files.
+ * 
+ * upload: config setup for single file upload.
+ */
 const upload = multer({
   storage: multer.diskStorage(
     {
@@ -21,10 +27,16 @@ const upload = multer({
   )
 });
 
-/* POST PDF to database */
+/* 
+ * POST a single PDF to storage and embed the watermark to file and record
+ * the file meta information to db.
+ * 
+ * Two destinations are set for PDF files file storage
+ *  - pdfs (folder)
+ *  - pdfs_watermark (folder)
+ */
 router.post('/', upload.single('file'), async (req, res, next) => {
   try {
-    console.log('req.file...', req.file);
     // watermark the PDF file.
     const options = {
       'text': 'MDisrupt Watermark',
@@ -45,6 +57,10 @@ router.post('/', upload.single('file'), async (req, res, next) => {
   }
 });
 
+/* 
+ * GET request to retrieve listing of PDF files that have already
+ * been uploaded/stored.
+ */
 router.get('/', async function(req, res, next) {
   try {
     res.json(await pdf.getList(req.query));
@@ -54,11 +70,12 @@ router.get('/', async function(req, res, next) {
   }
 });
 
-// PDF get single PDF asset.
+/*
+ * Server RAW PDF asset.
+ */
 router.get('/:filename', async (req, res, next) => {
   try {
     const pdfInfo = await pdf.getPDF(req.params);
-    console.log('pdfInfo...', pdfInfo);
     const dirname = path.resolve();
     const fullFilePath = path.join(dirname, pdfInfo.result[0].filepath);
     return res.type(pdfInfo.result[0].mimetype).sendFile(fullFilePath);
@@ -68,6 +85,9 @@ router.get('/:filename', async (req, res, next) => {
   }
 });
 
+/* 
+ * Server RAW Watermark PDF asset.
+ */
 router.get('/watermark/:filename', async (req, res, next) => {
   try {
     const pdfInfo = await pdf.getPDF(req.params);
