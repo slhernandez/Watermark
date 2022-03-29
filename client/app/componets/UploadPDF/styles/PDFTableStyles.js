@@ -21,9 +21,10 @@ const PDFTableStyles = styled.div`
   table thead {
     text-align: left;
     box-shadow: none;
+    background: #FAFAFA;  
     tr {
       th {
-        cursor: auto;
+        cursor: aFAFAFA;  
         //background: ${props => props.theme.tableBackgroundColor};
         background: ${props => props.theme.blue};
         text-align: inherit;

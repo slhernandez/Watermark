@@ -18,13 +18,17 @@ const UploadPDFStyles = styled.div`
   }
 
   .upload-controls {
-    width: 500px;
+    width: 350px;
     margin: 0 auto;
   }
 
   .upload-btn {
     margin-top: 2em;
     width: 100%;
+    background: #ff2e00;
+    color: #FFF;
+    font-weight: 600;
+    border: 1px solid #ff2e00;
   }
 
   .file-upload-label {

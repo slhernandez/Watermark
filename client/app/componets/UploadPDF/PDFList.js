@@ -32,11 +32,22 @@ function PDFList(props) {
     getPDFList()
   }, [props.updatePDFList]);
 
+  useEffect(() => {
+    getPDFList()
+  }, []);
+
+
   return(
     <PDFListStyles>
-      <div className="pdf-list-container">
-        {data && <PDFTable data={data} />}
-      </div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : isError ? (
+        <p>Error: {errorMsg}</p>
+      ) : (
+        <div className="pdf-list-container">
+          {data && <PDFTable data={data} />}
+        </div>
+      )}
     </PDFListStyles>
   )
 }

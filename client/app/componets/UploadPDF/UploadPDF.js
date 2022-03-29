@@ -16,6 +16,7 @@ function UploadPDF() {
     setSuccessMsg("");
     setIsError(false);
     setErrorMsg("");
+    setUpdatePDFList(false);
   };
 
   const captureFile = e => {
