@@ -6,6 +6,25 @@ const UploadPDFStyles = styled.div`
     margin: 6em auto 6em auto
   }
 
+  .fieldset {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 1em 2em 1.5em 2em;
+    border-radius: 6px;
+    margin-top: 3em;
+  }
+
+  .fieldset h1 {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    margin: -9px 0 0; /* half of font-size */
+    background: #f5f7f9;
+    padding: 0 3px;
+  }
+
   .upload-title {
     font-size: 1.6em;
     font-weight: 600;
@@ -13,8 +32,8 @@ const UploadPDFStyles = styled.div`
   }
 
   .upload-form {
-    margin-top: 3em;
-    text-align: center;
+    padding: 1em;
+    box-sizing: border-box;
   }
 
   .upload-controls {
@@ -23,12 +42,37 @@ const UploadPDFStyles = styled.div`
   }
 
   .upload-btn {
-    margin-top: 2em;
+    margin-top: 1em;
     width: 100%;
     background: #ff2e00;
     color: #FFF;
     font-weight: 600;
     border: 1px solid #ff2e00;
+  }
+
+  .upload-btn.pulse {
+    animation: shadow-pulse 1s infinite ease-in-out;
+  }
+
+  @keyframes shadow-pulse {
+    0% {
+      box-shadow: 0 0 8px 3px rgba(89, 172, 245, 0.2);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 8px 3px rgba(89, 172, 245, 0.9);
+      transform: scale(1);
+    }
+    100% {
+      box-shadow: 0 0 8px 3px rgba(89, 172, 245, 0.2);
+      transform: scale(1);
+    }
+  }
+
+  .upload-btn:disabled {
+    opacity: 50%;
+    animation: none;
+    box-shadow: none;
   }
 
   .file-upload-label {
@@ -47,14 +91,16 @@ const UploadPDFStyles = styled.div`
   }
 
   input[type=file]::file-selector-button:hover {
-    background-color: #81ecec;
-    border: 2px solid #00cec9;
+    background-color: #489df7;
+    border: 1px solid #489df7;
   }
 
   .upload-error-msg {
     padding: 0.5em 0 0.5em 0;
     font-weight: 600;
     color: red;
+    font-size: 14px;
+    text-align: center;
   }
 
   .upload-progress-msg {

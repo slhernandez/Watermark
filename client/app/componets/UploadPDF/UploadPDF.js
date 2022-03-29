@@ -11,6 +11,7 @@ function UploadPDF() {
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [updatePDFList, setUpdatePDFList] = useState(false);
+  const [uploadBtnDisabled, setUploadBtnDisabled] = useState(true);
 
   const resetUIState = () => {
     setSuccessMsg("");
@@ -22,6 +23,7 @@ function UploadPDF() {
   const captureFile = e => {
     const file = e.target.files[0];
     setFile(file);
+    setUploadBtnDisabled(false);
 
     // Reset UI state before uploading PDF file.
     resetUIState();
@@ -43,6 +45,7 @@ function UploadPDF() {
         setIsLoading(false);
         setSuccessMsg("Upload was successful.");
         setUpdatePDFList(true);
+        setUploadBtnDisabled(true);
       } else {
         setIsLoading(false);
         setIsError(true);
@@ -74,17 +77,25 @@ function UploadPDF() {
       <div className="upload-container">
         <h1 className="upload-title">PDF Watermarking Tool</h1>
         <div className="upload-controls">
-          <form className="upload-form" action="#">
-            <label htmlFor="file" className="file-upload-label">PDF file:</label>
-            <input 
-              type="file" 
-              id="file" 
-              accept='.pdf' 
-              className="custom-file-input" 
-              onChange={captureFile} 
-            />
-          </form>
-          <button className="btn upload-btn" onClick={send}>Upload PDF</button>
+          <section className="fieldset">
+            <h1>Upload PDF File</h1>
+            <form className="upload-form" action="#">
+              <input 
+                type="file" 
+                id="file" 
+                accept='.pdf' 
+                className="custom-file-input" 
+                onChange={captureFile} 
+              />
+            </form>
+            <button 
+              className="btn upload-btn pulse" 
+              onClick={send}
+              disabled={uploadBtnDisabled}
+            >
+              Upload PDF
+            </button>
+          </section>
           {isLoading && <p className="upload-progress-msg">Uploading PDF file...</p>}
           {successMsg && <p className="upload-success">{successMsg}</p>}
           {isError && 
