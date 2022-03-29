@@ -15,5 +15,24 @@ export const uploadPDF = async (data) => {
     );
     throw error;
   }
+}
 
+export const getPDFItems = async () => {
+  const baseUrl = API_ENDPOINT;
+  const url = baseUrl + "pdf";
+  const endpoint = window.encodeURI(url);
+
+  try {
+    return await axios.get(endpoint, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+    });
+  } catch (error) {
+    console.error(
+      `Error encoutered while getting PDF lists = ${error}`
+    );
+    throw error;
+  }
 }

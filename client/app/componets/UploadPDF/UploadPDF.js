@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import UploadPDFStyles from './styles/UploadPDFStyles';
+import PDFList from './PDFList';
 import * as API from '../../utils/api';
 
 function UploadPDF() {
@@ -9,6 +10,7 @@ function UploadPDF() {
   const [successMsg, setSuccessMsg] = useState(null);
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [updatePDFList, setUpdatePDFList] = useState(false);
 
   const resetUIState = () => {
     setSuccessMsg("");
@@ -17,7 +19,6 @@ function UploadPDF() {
   };
 
   const captureFile = e => {
-
     const file = e.target.files[0];
     setFile(file);
 
@@ -25,6 +26,9 @@ function UploadPDF() {
     resetUIState();
   };
 
+  /*
+   * ASYNC/AWAIT request to upload single PDF file.
+   */
   const upload = async(data) => {
 
     // Reset UI state before uploading PDF file.
@@ -37,6 +41,7 @@ function UploadPDF() {
       if (response.status === 200) {
         setIsLoading(false);
         setSuccessMsg("Upload was successful.");
+        setUpdatePDFList(true);
       } else {
         setIsLoading(false);
         setIsError(true);
@@ -88,6 +93,7 @@ function UploadPDF() {
             </div>
           }
         </div>
+        <PDFList updatePDFList={updatePDFList} />
       </div>
     </UploadPDFStyles>
   )
