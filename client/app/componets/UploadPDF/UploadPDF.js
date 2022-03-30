@@ -40,7 +40,6 @@ function UploadPDF() {
     try {
       setIsLoading(true);
       const response = await API.uploadPDF(data);
-      console.log('UploadPDF...response...', response);
       if (response.status === 200) {
         setIsLoading(false);
         setSuccessMsg("Upload was successful.");
@@ -49,7 +48,7 @@ function UploadPDF() {
       } else {
         setIsLoading(false);
         setIsError(true);
-        setErrorMsg("Upload was unsuccessful.")
+        setErrorMsg(`Upload was unsuccessful. Status Code: ${response.status}`);
       }
     } catch (error) {
       console.error(
@@ -61,6 +60,9 @@ function UploadPDF() {
     }
   };
 
+  /*
+   * Send onClick event that trigger PDF file upload.
+   */
   const send = e => {
     if (file) {
       const data = new FormData();

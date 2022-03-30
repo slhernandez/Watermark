@@ -86,14 +86,26 @@ function PDFTable(props) {
         Header: "Original PDF",
         accessor: "filename",
         Cell: props => {
-          return <a className="download-pdf" target="_blank" href={`${API_ENDPOINT}pdf/${props.value}`}>Download</a>
+          return <a 
+                  className="download-pdf" 
+                  target="_blank" 
+                  href={`${API_ENDPOINT}pdf/${props.value}`}
+                >
+                  Download
+                </a>
         }
       },
       {
         Header: "Watermark PDF",
         accessor: "watermarkfilepath",
         Cell: props => {
-          return <a className="download-pdf" target="_blank" href={`${API_ENDPOINT}pdf/watermark/${props.value.slice(25)}`}>Download</a>
+          return <a 
+                  className="download-pdf"
+                  target="_blank"
+                  href={`${API_ENDPOINT}pdf/watermark/${props.value.slice(25)}`}
+                >
+                  Download
+                </a>
         }
       },
     ]

@@ -7,24 +7,28 @@ function PDFList(props) {
 
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [successMsg, setSuccessMsg] = useState(null);
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   const getPDFList = async() => {
     try {
+      setIsLoading(true)
       const response = await API.getPDFItems();
-      console.log('response...', response);
       if (response.status === 200) {
         setData(response.data.data);
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+        setIsError(true);
+        setErrorMsg(`Unable to retrieve list of PDF files. Status Code: ${response.status}`);
       }
     } catch (error) {
       console.error(
         `Encountered error while uploading PDF file. Error ${error.message}`
       )
-      //setIsLoading(false);
-      //setIsError(true);
-      //setErrorMsg(error.message);
+      setIsLoading(false);
+      setIsError(true);
+      setErrorMsg(error.message);
     }
   }
 

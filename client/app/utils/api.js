@@ -2,6 +2,9 @@ import axios from 'axios';
 
 const API_ENDPOINT = "http://localhost:3000/"
 
+/*
+ * API POST to upload a single PDF file using axios.
+ */
 export const uploadPDF = async (data) => {
   const baseUrl = API_ENDPOINT;
   const url = baseUrl + "pdf";
@@ -17,6 +20,9 @@ export const uploadPDF = async (data) => {
   }
 }
 
+/*
+ * API request to a list of PDF files that have been uploaded.
+ */
 export const getPDFItems = async () => {
   const baseUrl = API_ENDPOINT;
   const url = baseUrl + "pdf";
