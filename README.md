@@ -34,6 +34,9 @@ cd server
 npm install
 npm start
 ```
+Enter [http://localhost:3000/pdf](http://localhost:3000) (should get a list of PDF files stored in db)
+
+
 
 ## Client (React)
 
@@ -44,9 +47,11 @@ cd client
 npm install
 npm start
 ```
+Enter [http://localhost:8080](http://localhost:8080) (Load Watermark Tool page)
 
 ## Shortcoming
 Below is a list of compromises made due to time constraints.
+- There is no UI indicator to inform the user that the watermark PDF has finished processing to local storage. You currently have to wait 30 to 60 seconds before you are able to download the file. Clicking the download link just after upload is complete will generate an error. Optimal solution would be to hide the download link until watermark file processing is complete.
 - The react app only allows PDF formatted files for upload. 
 - The app only allows users to upload single PDF uploads. There is no multi-select support.
 - Only unique PDF files can be uploaded (no duplicate uploads allowed). 
